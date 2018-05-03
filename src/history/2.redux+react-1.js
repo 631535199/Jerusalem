@@ -19,24 +19,10 @@ let reducer = (state = {number:1},action)=>{
 let store = createStore(reducer);
 
 class Counter extends React.Component{
-    constructor(){
-        super();
-        this.state ={number: store.getState().number};
-    }
-    componentWillMount(){
-        this.unsubscribe=store.subscribe(()=>{
-            this.setState({
-                 number:store.getState().number
-            })
-        })
-    }
-    compontWillUnMount(){
-        this.unsubscribe();
-    }
     render(){
         return(
             <div>
-                <p>{this.state.number}</p>
+                <p>{store.getState().number}</p>
                 <button onclick={()=>store.dispatch({type:INCREASE,amount:2})}>+</button>
                 <button onclick={()=>store.dispatch({type:DECREASE,amount:2})}>-</button>
             </div>

@@ -20,7 +20,7 @@ const createStore= (reducer)=>{
     let subscribe = (listener)=>{
         listeners.push(listener);
         return ()=>{
-            listener.filter(l=>listener!=l)
+            listeners = listeners.filter(l=>listener!==l);
         }
     }
 
